@@ -1,0 +1,37 @@
+spring:
+  rabbitmq:
+    addresses: 192.168.109.128:5672
+    username: mqTest
+    password: 123
+    virtual-host: testHost
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
+    publisher-returns: true
+    template:
+      mandatory: true
+    ## 消费端配置
+    listener:
+      simple:
+        concurrency: 5
+        ## manual:手动 ack（确认）
+        acknowledge-mode: manual
+        max-concurrency: 10
+        prefetch: 1
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+server:
+  port: 8001
+  servlet:
+    context-path: /
+mybatis:
+  type-aliases-package: com.sxw.springbootproducer
+  mapper-locations: classpath:com/sxw/springbootproducer/mapping/*.xml
+logging:
+  level:
+    tk:
+      mybatis: trace
