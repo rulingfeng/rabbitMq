@@ -19,6 +19,7 @@ public class AckSender {
         @Override
         public void confirm(CorrelationData correlationData, boolean ack, String cause) {
             System.err.println("correlationData: " + correlationData);
+            System.out.println("ack:"+ack);
             String messageId = correlationData.getId();
             if(ack){
                 //如果confirm返回成功 则进行更新

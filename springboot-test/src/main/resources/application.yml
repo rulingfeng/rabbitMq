@@ -1,9 +1,9 @@
 spring:
   rabbitmq:
-    addresses: 192.168.109.128:5672
-    username: mqTest
-    password: 123
-    virtual-host: testHost
+    addresses: 120.26.81.182:5672
+    username: mall
+    password: mall
+    virtual-host: /mall
     publisher-confirms: true #如果对异步消息需要回调必须设置为true
     publisher-returns: true
     template:
@@ -18,9 +18,9 @@ spring:
         prefetch: 1
 
   datasource:
-    url: jdbc:mysql://localhost:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    url: jjdbc:mysql://120.26.81.182:3306/mall?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&useOldAliasMetadataBehavior=true&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
     username: root
-    password: 123456
+    password: root
     driverClassName: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
